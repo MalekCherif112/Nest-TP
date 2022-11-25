@@ -4,9 +4,17 @@ import { AppService } from './app.service';
 import { PremierModule } from './premier/premier.module';
 import { TodoModuleModule } from './todo-module/todo-module.module';
 import { TodoModuleController } from './todo-module/todo-module.controller';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ToDoEntity } from './entities/ToDoEntity';
-import { ToDoService } from './todo-service/todo-service.service';
+
+import { Cv } from './cv/entities/cv.entity';
+import { User } from './user/entities/user.entity';
+import { Skill } from './skill/entities/skill.entity';
+
+import { CvModule } from './cv/cv.module';
+import { SkillModule } from './skill/skill.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [PremierModule, TodoModuleModule,
@@ -18,10 +26,14 @@ import { ToDoService } from './todo-service/todo-service.service';
         username: "root",
         password: "",
         database: "todo",
-        entities: [ToDoEntity],
+        autoLoadEntities:true,
+        logging:true,
         synchronize: true,
       }
-    )
+    ),
+    CvModule,
+    SkillModule,
+    UserModule
   ],
   controllers: [AppController, TodoModuleController],
   providers: [AppService],

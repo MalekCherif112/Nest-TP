@@ -17,9 +17,8 @@ import {
 import { TodoModel } from './todo-model';
 import { TodoDto } from './dto/add-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
-import { version } from 'os';
-import { ToDoService } from 'src/todo-service/todo-service.service';
-import { ToDoEntity } from 'src/entities/ToDoEntity';
+import { ToDoService } from '../todo-service/todo-service.service';
+import { ToDoEntity } from '../entities/ToDoEntity';
 import { TodoStatusEnum } from './todo-status-enum';
 import { SearchTodoDto } from './dto/search-todo.dto';
 
@@ -61,6 +60,13 @@ export class TodoModuleController {
       doneTodos,
       actifTodos
     }
+  }
+
+  @Get('/count2')
+  @Version("2")
+  //Another method with querbuilder
+  async countByStatus2() {
+    return this.toDoService.countByStatus2();
   }
 
   @Post()
@@ -157,7 +163,6 @@ export class TodoModuleController {
       message: `toDo with id ${id} is not found`,
     };
   }
-
 
   @Put('/:id')
   @Version("1")

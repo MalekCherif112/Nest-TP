@@ -1,5 +1,5 @@
-import { DateGenerator } from 'src/date-generator';
-import { TodoStatusEnum } from 'src/todo-module/todo-status-enum';
+import { DateGenerator } from '../date-generator';
+import { TodoStatusEnum } from '../todo-module/todo-status-enum';
 import { Entity,Column, PrimaryGeneratedColumn, UpdateDateColumn, DeleteDateColumn, CreateDateColumn } from 'typeorm';
 
 @Entity("todo")
